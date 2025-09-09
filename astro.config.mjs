@@ -9,4 +9,6 @@ export default defineConfig({
     plugins: [tailwindcss(),]
   },
   integrations: [svelte()],
+  site: 'https://emanueldtt.github.io',
+  base: '/tmo-status',
 });
