@@ -3,25 +3,35 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - master  # o main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Clonar el repositorio
       - uses: actions/checkout@v4
+
+      # 2️⃣ Instalar pnpm
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-            # ...existing code...
+
+      # 3️⃣ Instalar dependencias
+      - name: Install dependencies
+        run: pnpm install
+
+      # 4️⃣ Configurar variables de entorno
       - name: Set env vars
         run: echo "PUBLIC_YOUTUBE_API_KEY=${{ secrets.PUBLIC_YOUTUBE_API_KEY }}" >> $GITHUB_ENV
-      - run: pnpm build
-      # ...existing code...
-      - run: pnpm install
-      - run: pnpm build
+
+      # 5️⃣ Construir el sitio Astro
+      - name: Build Astro site
+        run: pnpm build
+
+      # 6️⃣ Desplegar a GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.0.0
         with:
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
