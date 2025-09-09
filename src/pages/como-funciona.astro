@@ -2,10 +2,10 @@
 // src/pages/como-funciona.astro
 import Layout from '@layouts/Layout.astro';
 import RandomSongGift from '@components/RandomSongGift.svelte';
-import { YouTubeService } from '@services/YouTubeService';
+import { YouTubeService } from '../services/YoutubeService';
 
-const API_KEY = import.meta.env.YOUTUBE_API_KEY;
-const randomVideo = await YouTubeService.getRandomAnimeOpening(API_KEY);
+const PUBLIC_YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+const randomVideo = await YouTubeService.getRandomAnimeOpening(PUBLIC_YOUTUBE_API_KEY);
 
 ---
 
@@ -36,7 +36,7 @@ const randomVideo = await YouTubeService.getRandomAnimeOpening(API_KEY);
       client:load
       initialSongUrl={randomVideo.url}
       initialSongTitle={randomVideo.title}
-      apiKey={API_KEY || ''}
+      apiKey={PUBLIC_YOUTUBE_API_KEY || ''}
     />
 
     <div class="mt-8 text-center">
