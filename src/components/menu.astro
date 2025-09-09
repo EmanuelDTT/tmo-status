@@ -1,0 +1,56 @@
+---
+import '@styles/global.css';
+---
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="/" class="text-xl font-bold" style="color:#2957ba;">TMO esta caido?</a>
+
+    <!-- Desktop menu -->
+    <ul class="hidden md:flex space-x-8 font-medium" aria-label="Menú principal">
+      <li>
+        <a href="/about" class="hover:underline transition-colors duration-200" style="color:#2957ba;">como nacio esta pagina</a>
+      </li>
+      <li>
+        <a href="/como-funciona" class="hover:underline transition-colors duration-200" style="color:#2957ba;">Cómo funciona</a>
+      </li>
+      <!-- <li>
+        <a href="#contact" class="hover:underline transition-colors duration-200" style="color:#2957ba;">Contacto</a>
+      </li> -->
+    </ul>
+
+    <!-- Mobile button -->
+    <button
+      id="menu-btn"
+      class="md:hidden text-[#2957ba] hover:bg-[#2957ba] hover:text-white p-2 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#2957ba]"
+      aria-label="Abrir menú"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      onclick="document.getElementById('mobile-menu').classList.toggle('hidden'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');"
+    >
+      ☰
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="hidden md:hidden bg-white border-t border-gray-200 animate-slide-down"
+  aria-label="Menú móvil"
+>
+  <div class="px-4 py-3 space-y-2">
+    <a href="/about" class="block hover:underline transition-colors duration-200" style="color:#2957ba;">Características</a>
+    <a href="/como-funciona" class="block hover:underline transition-colors duration-200" style="color:#2957ba;">Cómo funciona</a>
+    <!-- <a href="#contact" class="block hover:underline transition-colors duration-200" style="color:#2957ba;">Contacto</a> -->
+  </div>
+</div>
+
+<style>
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  .animate-slide-down {
+    animation: slide-down 0.2s ease;
+  }
