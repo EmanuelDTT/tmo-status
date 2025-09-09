@@ -1,0 +1,67 @@
+---
+
+import CheckStatus from '@components/checkstatus.svelte';
+---
+
+<section class="relative flex flex-col items-center justify-center text-center px-6 py-24 bg-white">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-[#2957ba] leading-tight">
+      ¿TMO está caído <span class="bg-gradient-to-r from-[#2957ba] to-indigo-400 bg-clip-text text-transparent">o no?</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-600 mb-8">
+        Revisa en segundos si <span class="font-semibold text-[#2957ba]">TMO</span> respira… o ya se desplomó otra vez.
+    </p>
+   
+     <CheckStatus client:load />
+
+  </div>
+</section>
+
+
+<section id="features" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-14 text-[#2957ba]">¿Por qué usar “TMO está caído?”</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      
+   
+      <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl border border-gray-100 flex flex-col items-center">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-xl font-semibold text-[#2957ba] mb-2">Respuesta inmediata</h3>
+        <p class="text-gray-500 text-center">
+          Deja de presionar F5 como loco: aquí sabrás al instante si TMO murió o si solo eres impaciente.
+        </p>
+      </div>
+      
+
+      <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl border border-gray-100 flex flex-col items-center">
+        <div class="text-4xl mb-4">📊</div>
+        <h3 class="text-xl font-semibold text-[#2957ba] mb-2">Confirmación real</h3>
+        <p class="text-gray-500 text-center">
+          Deja de googlear "TMO está caído?": aquí te confirmamos si TMO esta bien o ya se murio de nuevo.
+        </p>
+      </div>
+      
+ 
+      <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl border border-gray-100 flex flex-col items-center">
+        <div class="text-4xl mb-4">🔔</div>
+        <h3 class="text-xl font-semibold text-[#2957ba] mb-2">Avisos sin drama</h3>
+        <p class="text-gray-500 text-center">
+          A nadie le gusta que justo vas a darle al siguiente capítulo y TMO esté caído. Aquí te avisamos al instante.
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="how" class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6 text-[#2957ba]">Cómo funciona</h2>
+    <p class="text-gray-600 text-lg">
+      Solo dale al botón de arriba que ya scrolleaste y ahí sabrás si <span class="text-[#2957ba] font bold">TMO</span> se cayó o si esta vaina sigue viva.
+    </p>
+  </div>
+</section>
