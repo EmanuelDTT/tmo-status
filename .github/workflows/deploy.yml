@@ -13,6 +13,11 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+            # ...existing code...
+      - name: Set env vars
+        run: echo "PUBLIC_YOUTUBE_API_KEY=${{ secrets.PUBLIC_YOUTUBE_API_KEY }}" >> $GITHUB_ENV
+      - run: pnpm build
+      # ...existing code...
       - run: pnpm install
       - run: pnpm build
       - name: Deploy to GitHub Pages
