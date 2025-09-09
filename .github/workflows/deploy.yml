@@ -1,37 +1,41 @@
-name: Deploy Astro site to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
+  # Trigger the workflow every time you push to the `main` branch
+  # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches:
-      - master  # o main
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Clonar el repositorio
-      - uses: actions/checkout@v4
-
-      # 2️⃣ Instalar pnpm
-      - uses: pnpm/action-setup@v2
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
         with:
-          version: 8
+          path: . # The root location of your Astro project inside the repository. (optional)
+          node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
+          package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+        env:
+          PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
 
-      # 3️⃣ Instalar dependencias
-      - name: Install dependencies
-        run: pnpm install
-
-      # 4️⃣ Configurar variables de entorno
-      - name: Set env vars
-        run: echo "PUBLIC_YOUTUBE_API_KEY=${{ secrets.PUBLIC_YOUTUBE_API_KEY }}" >> $GITHUB_ENV
-
-      # 5️⃣ Construir el sitio Astro
-      - name: Build Astro site
-        run: pnpm build
-
-      # 6️⃣ Desplegar a GitHub Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4.0.0
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./dist
+        id: deployment
+        uses: actions/deploy-pages@v4
