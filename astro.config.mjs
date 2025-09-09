@@ -10,5 +10,5 @@ export default defineConfig({
   },
   integrations: [svelte()],
   site: 'https://emanueldtt.github.io',
-  base: '/tmo-status',
+
 });
