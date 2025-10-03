@@ -4,8 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import RandomSongGift from '@components/RandomSongGift.svelte';
 import { YouTubeService } from '@services/YoutubeService';
 
-const API_KEY = import.meta.env.YOUTUBE_API_KEY;
-const randomVideo = await YouTubeService.getRandomAnimeOpening(API_KEY);
+
 
 ---
 
@@ -27,17 +26,11 @@ const randomVideo = await YouTubeService.getRandomAnimeOpening(API_KEY);
 
       <p class="text-lg text-gray-700 leading-relaxed mb-6">
         Honestamente no sé ni pa' qué hice esta vista si es obvio cómo funciona esta vaina, 
-        pero bueno, ya que estás aquí, te voy a dar un regalo sorpresa 👇
+        pero bueno, ya que estás aquí, Todo bien compae
       </p>
     </article>
 
-    <!-- Componente Svelte para la canción sorpresa -->
-    <RandomSongGift 
-      client:load
-      initialSongUrl={randomVideo.url}
-      initialSongTitle={randomVideo.title}
-      apiKey={API_KEY || ''}
-    />
+
 
     <div class="mt-8 text-center">
       <a 
