@@ -10,5 +10,6 @@ export default defineConfig({
   },
   integrations: [svelte()],
   site: 'https://emanueldtt.github.io',
+  output: 'static',
 
 });
